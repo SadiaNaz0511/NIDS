@@ -1,0 +1,5 @@
+alert icmp any any -> $HOME_NET any (  sid:20001; rev:1; )
+alert tcp any any -> any 22 ( msg:"SSH Connection Alert";  sid:20002; rev:1; )
+alert tcp any any -> $HOME_NET 21 ( msg:"FTP Alert"; sid:20003; rev:1; )
+
+snort -q -l /var/log/snort -i enp0s3 -A console -c /etc/snort/snort.conf
